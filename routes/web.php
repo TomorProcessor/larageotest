@@ -19,3 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/counties', [\App\Http\Controllers\CountyController::class, 'index']);
 Route::get('/counties/{county}', [\App\Http\Controllers\CountyController::class, 'show']);
+Route::get('/counties/{country}/cities', [\App\Http\Controllers\CityController::class, 'index']);
+Route::post('/new_city', [\App\Http\Controllers\CityController::class, 'store']);
+
+
+
+//function asd(string &$val)
+//{
+//
+//}
