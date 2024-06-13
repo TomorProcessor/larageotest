@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/counties', [\App\Http\Controllers\CountyController::class, 'index']);
+Route::get('/counties/{county}', [\App\Http\Controllers\CountyController::class, 'show']);

@@ -11,4 +11,8 @@ class CountyController extends Controller
 //        dd(County::all());
         return response()->json(County::all());
     }
+
+    public function show(County $county) {
+        return response()->json($county);
+    }
 }
