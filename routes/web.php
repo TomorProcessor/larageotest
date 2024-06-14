@@ -22,6 +22,7 @@ Route::get('/counties/{county}', [\App\Http\Controllers\CountyController::class,
 Route::get('/counties/{county}/cities', [\App\Http\Controllers\CityController::class, 'index']);
 Route::post('/new_city', [\App\Http\Controllers\CityController::class, 'store']);
 Route::post('/delete_city/{city}', [\App\Http\Controllers\CityController::class, 'destroy']);
+Route::post('/update_city/{city}', [\App\Http\Controllers\CityController::class, 'update']);
 
 
 

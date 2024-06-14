@@ -32,4 +32,16 @@ class CityController extends Controller
         $city->delete();
         return response()->json($city);
     }
+
+    public function update(City $city)
+    {
+        $validatedParams = request()->validate([
+            'city_name' => 'required'
+        ]);
+        $city->update([
+            'name' => $validatedParams['city_name']
+        ]);
+
+        return response()->json($city);
+    }
 }

@@ -5,3 +5,5 @@
     -város neve: city_name
     -megye id-ja: county_id
     -pl. 127.0.0.1:8000/new_city?city_name=tiszasziget&county_id=43
+-város törlése: /delete_city/{city}, pl. 127.0.0.1:8000/delete_city/5
+
