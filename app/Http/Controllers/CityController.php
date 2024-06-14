@@ -26,4 +26,10 @@ class CityController extends Controller
 
         return response()->json($city);
     }
+
+    public function destroy(City $city)
+    {
+        $city->delete();
+        return response()->json($city);
+    }
 }
