@@ -15,15 +15,16 @@ class CityController extends Controller
 
     public function store()
     {
-//        dd(request()->get('cityname'));
         $validatedParams = request()->validate([
             'city_name' => 'required',
             'county_id' => 'required|exists:counties,id'
         ]);
 
-        City::create([
-            'name' => $validatedParams['cityname'],
+        $city = City::create([
+            'name' => $validatedParams['city_name'],
             'county_id' => $validatedParams['county_id']
         ]);;
+
+        return response()->json($city);
     }
 }
