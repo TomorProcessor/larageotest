@@ -8,7 +8,6 @@ use App\Models\County;
 class CityController extends Controller
 {
     public function index(County $county)  {
-//        $cities = City::all()->where('name', 'like', '%' . $county->name . '%');
         $cities = $county->cities;
         return response()->json($cities);
     }

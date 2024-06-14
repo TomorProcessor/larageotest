@@ -10,4 +10,9 @@ class City extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'county_id'];
+
+    public function county()
+    {
+        return $this->belongsTo(County::class);
+    }
 }

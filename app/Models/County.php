@@ -11,7 +11,7 @@ class County extends Model
 
     protected $fillable = ['name'];
 
-    public function cities()
+    public function cities(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(City::class);
     }
