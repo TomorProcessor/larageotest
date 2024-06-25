@@ -45,6 +45,11 @@ class Kernel extends HttpKernel
         ],
     ];
 
+    protected $routeMiddleware = [
+        // ...
+        'cors' => \App\Http\Middleware\CorsMiddleware::class,
+    ];
+
     /**
      * The application's middleware aliases.
      *

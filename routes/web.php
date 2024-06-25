@@ -17,7 +17,14 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/counties', [\App\Http\Controllers\CountyController::class, 'index']);
+Route::options('/{any}', function () {
+    return response('', 200)
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, X-Token-Auth, Authorization');
+})->where('any', '.*');
+
+Route::get('/counties', [\App\Http\Controllers\CountyController::class, 'index'])->middleware('cors');
 Route::get('/counties/{county}', [\App\Http\Controllers\CountyController::class, 'show']);
 Route::get('/counties/{county}/cities', [\App\Http\Controllers\CityController::class, 'index']);
 Route::post('/new_city', [\App\Http\Controllers\CityController::class, 'store']);
