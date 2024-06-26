@@ -29,7 +29,7 @@ Route::get('/counties/{county}', [\App\Http\Controllers\CountyController::class,
 Route::get('/counties/{county}/cities', [\App\Http\Controllers\CityController::class, 'index'])->middleware('cors');
 Route::post('/new_city', [\App\Http\Controllers\CityController::class, 'store'])->middleware('cors');
 Route::post('/delete_city/{city}', [\App\Http\Controllers\CityController::class, 'destroy'])->middleware('cors');;
-Route::post('/update_city/{city}', [\App\Http\Controllers\CityController::class, 'update']);
+Route::post('/update_city/{city}', [\App\Http\Controllers\CityController::class, 'update'])->middleware('cors');
 
 
 
