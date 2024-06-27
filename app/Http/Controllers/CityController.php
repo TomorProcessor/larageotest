@@ -6,12 +6,13 @@ use App\Http\Requests\CityStorePostRequest;
 use App\Http\Requests\CityUpdateRequest;
 use App\Models\City;
 use App\Models\County;
+use App\Http\Resources\CityResource;
 
 class CityController extends Controller
 {
     public function index(County $county)  {
         $cities = $county->cities;
-        return response()->json($cities);
+        return new CityResource($cities);
     }
 
     public function store(CityStorePostRequest $request)
@@ -23,13 +24,13 @@ class CityController extends Controller
             'county_id' => $validatedParams['county_id']
         ]);;
 
-        return response()->json($city);
+        return new CityResource($city);
     }
 
     public function destroy(City $city)
     {
         $city->delete();
-        return response()->json($city);
+        return new CityResource($city);
     }
 
     public function update(CityUpdateRequest $request, City $city)
@@ -39,6 +40,6 @@ class CityController extends Controller
             'name' => $validatedParams['city_name']
         ]);
 
-        return response()->json($city);
+        return new CityResource($city);
     }
 }
