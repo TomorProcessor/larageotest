@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CityStorePostRequest;
+use App\Http\Requests\CityUpdateRequest;
 use App\Models\City;
 use App\Models\County;
 
@@ -12,12 +14,9 @@ class CityController extends Controller
         return response()->json($cities);
     }
 
-    public function store()
+    public function store(CityStorePostRequest $request)
     {
-        $validatedParams = request()->validate([
-            'city_name' => 'required',
-            'county_id' => 'required|exists:counties,id'
-        ]);
+        $validatedParams = $request->validated();
 
         $city = City::create([
             'name' => $validatedParams['city_name'],
@@ -33,11 +32,9 @@ class CityController extends Controller
         return response()->json($city);
     }
 
-    public function update(City $city)
+    public function update(CityUpdateRequest $request, City $city)
     {
-        $validatedParams = request()->validate([
-            'city_name' => 'required'
-        ]);
+        $validatedParams = $request->validated();
         $city->update([
             'name' => $validatedParams['city_name']
         ]);
